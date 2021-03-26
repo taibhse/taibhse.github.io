@@ -33,7 +33,9 @@ You do not want to make a mistake and clear the wrong device.
 
 ## Format the USB 
 if you found disk9 from the previous command, we use it here:
-`diskutil eraseDisk MS-DOS "WIN10" MBR disk9`
+```
+diskutil eraseDisk MS-DOS "WIN10" MBR disk9
+```
 
 That should format the USB with FAT and mount it at /Volumes/WIN10
 
@@ -42,22 +44,28 @@ This will make it possible to move the contents onto the USB.
 
 go to the directoy and open it:
 
-`open ./Win10_1607_English_x64.iso`
+```
+open ./Win10_1607_English_x64.iso
+```
 You can close the finder windows, this command will mount it somewhere like `/Volumes/CCSA_X64FRE_EN-US_DV5` 
 open that location for the nest step
 
 ## Copy the files onto the USB Stick
 Use rsync with the option to skip the problem file. (otherwise you will have to delete it later on a 8GB USB)
-`rsync -vha --exclude=sources/install.wim /Volumes/CCCOMA_X64FRE_EN-US_DV9/ /Volumes/WIN10`
+```
+rsync -vha --exclude=sources/install.wim /Volumes/CCCOMA_X64FRE_EN-US_DV9/ /Volumes/WIN10
+```
 
-If you really don;t want to use rsync, `sudo cp -r . /Volumes/WIN10/`
+If you really don't want to use rsync, `sudo cp -r . /Volumes/WIN10/`
 Just remember to run this if you see an error from install.wim being too big `rm /Volumes/WIN10/sources/install.wim`
 
 ## Dealing with sources/install.wim
 
 This file is too big, we need to use winlib to split it.
 If you don't have Homebrew install it:  (It is a very useful thing to have in OSX anyway)
-`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
 Here are the commands:
 ```
