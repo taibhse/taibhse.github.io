@@ -5,38 +5,30 @@ title: Creating bootable Windows usb from iso in macos
 
 ## Introduction
 
-You may want to install Windows 10 on a pc.
-
-Personally, My Windows desktop installed an OS update that is now causing a reboot loop. I need to boot into a USB to repair/rollbacl or install fresh.
-This happened every few years, figured it was time to document the step I follow.
-
-This process is easier when you want a Linux OS, just using DD makes life simpler. 
-
-
+Every now and then I need to look this up myself. Collecting and maintaining notes here.
+Let's start with Windows, as it is tricker than Linux:
 
 ## Credits
-While I have done this a few times, I don't know the process off the top of my head.
-I often jump between a few guides (finding one with the least amount of installing tools) and have a few failed attempts.
+I don't know this full process off the top of my head. I would like to credit sites that helped me
 
-Sources for this guide:
-https://www.unixtutorial.org/creating-bootable-usb-from-iso-in-macos/
-
+[unixtutorial](https://www.unixtutorial.org/creating-bootable-usb-from-iso-in-macos/)
 Decent guide, but there is an issue with Step 5, `sources/install.wim` is too big for the FAT32 file system.
 
-Additional source:
-https://www.freecodecamp.org/news/how-make-a-windows-10-usb-using-your-mac-build-a-bootable-iso-from-your-macs-terminal/
-
+[freecodecamp](https://www.freecodecamp.org/news/how-make-a-windows-10-usb-using-your-mac-build-a-bootable-iso-from-your-macs-terminal/)
 This has a process for using wimlib via Homebrew which worked well for me.
-
 
 
 ## Plug in the USB and find out what Disk number it is assigned with diskutil
 
 You want a USB at least 8GB in size for this.
-Open your command prompt and run `diskutil list`
 
-- Expect it to be the highest number list, but don't take that for granted. You may want to run the command before and after plugging it in.
+- Open your command prompt and run `diskutil list`
+- Plug in your USB Device
+- run `diskutil list` again
+
+While you can expect it to be the highest number list, don't take that for granted. 
 Double check it has the name and is about the right size.
+You do not want to make a mistake and clear the wrong device.
 
 
 ## Format the USB 
